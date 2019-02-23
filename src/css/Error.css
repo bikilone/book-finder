@@ -1,0 +1,30 @@
+.error {
+  border: 1px solid red;
+  width: 300px;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+  position: relative;
+  right: 100%;
+  visibility: hidden;
+  /* display: none; */
+  animation-name: fade;
+  animation-duration: 4s;
+}
+
+@keyframes fade {
+  0% {
+    visibility: visible;
+    right: 100%;
+  }
+  25% {
+    right: 0%;
+  }
+  75% {
+    right: 0%;
+  }
+  100% {
+    right: 100%;
+    display: none;
+  }
+}

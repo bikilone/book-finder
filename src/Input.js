@@ -2,7 +2,7 @@ import React from "react";
 import "./css/Input.css";
 
 export default function Input(props) {
-  const { inputText, onInputChange, onSubmit, clearInput } = props;
+  const { inputText, onInputChange, onSubmit, clearInput, onClick } = props;
   return (
     <div>
       <h1>Book | Finder</h1>
@@ -15,7 +15,7 @@ export default function Input(props) {
           value={inputText}
         />
         <span onClick={clearInput}>X</span>
-        <button className="search-button" type="submit">
+        <button onClick={onClick} className="search-button" type="submit">
           Search
         </button>
       </form>

@@ -33,6 +33,9 @@ span {
     width: 420px;
     margin: 10px;
   }
+  span {
+    right: 45px;
+  }
 }
 
 /* @media only screen and (max-width: 480px) {

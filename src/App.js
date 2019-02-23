@@ -32,7 +32,9 @@ class App extends Component {
     const url = "https://www.googleapis.com/books/v1/volumes?q=";
     // setting loader
     this.setState({
-      loading: true
+      loading: true,
+      error: false,
+      errorType: ""
     });
     // mistake - empty input
     if (this.state.input.length === 0) {
@@ -75,7 +77,10 @@ class App extends Component {
         });
     }
   };
-
+  // making sure that mistake is removed
+  onClick = () => {
+    this.setState({ error: false, errorType: "" });
+  };
   clearInput = () => {
     this.setState({ input: "" });
   };
@@ -87,6 +92,7 @@ class App extends Component {
           inputText={this.state.input}
           onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
+          onClick={this.onClick}
         />
         {// handling mistakes
         this.state.error ? (

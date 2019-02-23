@@ -1,15 +1,16 @@
 import React from "react";
+import "./css/Error.css";
 
 export default function Eror(props) {
   switch (props.error) {
     case "empty input":
-      return <div>You must enter something in input</div>;
+      return <div className="error">You must enter something in input</div>;
       break;
     case "empty response":
-      return <div>There is not such book</div>;
+      return <div className="error">There is no such book</div>;
       break;
     case "something went wrong":
-      return <div>Something went wrong</div>;
+      return <div className="error">Something went wrong</div>;
       break;
     default:
       return "";
