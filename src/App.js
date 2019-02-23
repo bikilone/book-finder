@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Input from "./Input";
 import CardList from "./CardList";
+import DataService from "./service/dataservice";
 import "./App.css";
 
 class App extends Component {
@@ -21,7 +22,20 @@ class App extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state.input);
+    const url = "https://www.googleapis.com/books/v1/volumes?q=";
+    fetch(url + this.state.input)
+      .then(res => res.json())
+      .then(data => {
+        const books = [];
+        data.items.forEach(book => {
+          console.log(book.volumeInfo.imageLinks);
+          books.push(new DataService(book.volumeInfo));
+        });
+        this.setState({
+          cards: books
+        });
+      })
+      .catch(error => console.log(error));
   };
   render() {
     return (

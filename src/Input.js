@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function Input(props) {
-  const { inputText, onInputChange, onSubmit } = props;
-
+  const { inputText, onInputChange, onSubmit, image } = props;
+  console.log(image);
   return (
     <div>
       <h1>Book |Finder</h1>
