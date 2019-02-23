@@ -8,6 +8,9 @@ export default function Eror(props) {
     case "empty response":
       return <div>There is not such book</div>;
       break;
+    case "something went wrong":
+      return <div>Something went wrong</div>;
+      break;
     default:
       return "";
   }

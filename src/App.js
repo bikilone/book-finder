@@ -6,7 +6,7 @@ import DataService from "./service/dataservice";
 import Loader from "react-loader-spinner";
 import Error from "./Error";
 
-import "./App.css";
+import "./css/App.css";
 
 class App extends Component {
   constructor() {
@@ -42,7 +42,14 @@ class App extends Component {
       fetch(
         `${url + this.state.input}&key=${key}&maxResults=40&orderBy=relevance`
       )
-        .then(res => res.json())
+        .then(res => {
+          // handling fetch errors
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
         .then(data => {
           const books = [];
           // mistake - empty response
@@ -60,13 +67,23 @@ class App extends Component {
             loading: false
           });
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          this.setState({
+            error: true,
+            errorType: "something went wrong"
+          });
+        });
     }
+  };
+
+  clearInput = () => {
+    this.setState({ input: "" });
   };
   render() {
     return (
       <div className="App">
         <Input
+          clearInput={this.clearInput}
           inputText={this.state.input}
           onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
