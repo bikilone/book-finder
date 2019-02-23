@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Input from "./Input";
 import CardList from "./CardList";
 import DataService from "./service/dataservice";
+import Loader from "react-loader-spinner";
+
 import "./App.css";
 
 class App extends Component {
@@ -10,7 +12,8 @@ class App extends Component {
     super();
     this.state = {
       input: "",
-      cards: []
+      cards: [],
+      loading: false
     };
   }
 
@@ -24,19 +27,21 @@ class App extends Component {
     e.preventDefault();
     const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
     const url = "https://www.googleapis.com/books/v1/volumes?q=";
+    this.setState({
+      loading: true
+    });
+
     fetch(`${url + this.state.input}&key=${key}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         const books = [];
         data.items.forEach(book => {
-          // console.log(book.volumeInfo.imageLinks);
           books.push(new DataService(book.volumeInfo));
         });
         this.setState({
-          cards: books
+          cards: books,
+          loading: false
         });
-        console.log(this.state.cards);
       })
       .catch(error => console.log(error));
   };
@@ -48,7 +53,19 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onSubmit={this.onSubmit}
         />
-        <CardList cards={this.state.cards} />
+        {this.state.loading ? (
+          <Loader
+            type="Circles"
+            color="green"
+            height={200}
+            width={200}
+            className="loader"
+          />
+        ) : this.state.cards.length > 0 ? (
+          <CardList cards={this.state.cards} loading={this.state.loading} />
+        ) : (
+          <p>Nothing yet</p>
+        )}
       </div>
     );
   }
