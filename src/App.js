@@ -5,6 +5,7 @@ import CardList from "./CardList";
 import DataService from "./service/dataservice";
 import Loader from "react-loader-spinner";
 import Error from "./Error";
+import LandingPage from "./LandingPage";
 
 import "./css/App.css";
 
@@ -109,7 +110,7 @@ class App extends Component {
         ) : this.state.cards.length > 0 ? ( // landing page issue
           <CardList cards={this.state.cards} loading={this.state.loading} />
         ) : (
-          <p>Nothing yet</p>
+          <LandingPage />
         )}
       </div>
     );
