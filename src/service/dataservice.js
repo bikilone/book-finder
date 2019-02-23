@@ -7,5 +7,4 @@ class DataService {
     this.link = data.previewLink;
   }
 }
-
 export default DataService;

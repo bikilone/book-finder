@@ -1,16 +1,17 @@
 import React from "react";
+import "./css/Card.css";
 
 export default function Card(props) {
   const { title, author, publisher, link, image } = props.card;
   return (
-    <div>
+    <div className="card">
       <img src={image} alt="" />
-      <div>
+      <div className="card-right">
         <h1>{title}</h1>
         <p>By: {author}</p>
         <p>Puublished By: {publisher}</p>
         <a href={link}>
-          <button>See this Book</button>
+          <button className="button">See this Book</button>
         </a>
       </div>
     </div>
