@@ -9,7 +9,7 @@ export default function Card(props) {
       <div className="card-right">
         <h1>{title}</h1>
         <p>By: {author}</p>
-        <p>Puublished By: {publisher}</p>
+        <p>Published By: {publisher}</p>
         <a href={link}>
           <button className="button">See this Book</button>
         </a>
