@@ -61,6 +61,7 @@ class App extends Component {
           } else {
             this.setState({ error: false, errorType: "" });
             data.items.forEach((book, i) => {
+              // console.log(book.volumeInfo.authors);
               books.push(new DataService(book.volumeInfo));
             });
           }

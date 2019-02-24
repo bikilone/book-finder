@@ -1,9 +1,9 @@
-import trim from "./helper";
+import { trim, trimAuthors } from "./helper";
 
 class DataService {
   constructor(data) {
     this.title = data.title.length > 100 ? trim(data.title) : data.title;
-    this.author = data.authors ? trim(data.authors) : "Unknown author";
+    this.author = data.authors ? trimAuthors(data.authors) : "Unknown author";
     this.publisher = data.publisher
       ? trim(data.publisher)
       : "Unknown publisher";
