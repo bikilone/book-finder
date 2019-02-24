@@ -3,7 +3,7 @@ import "./css/Card.css";
 
 export default function Card(props) {
   const { title, author, publisher, link, image } = props.card;
-  console.log(author);
+  console.log(title.length);
   return (
     <div className="card">
       <img src={image} alt="" />

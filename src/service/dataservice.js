@@ -2,7 +2,7 @@ import { trim, trimAuthors } from "./helper";
 
 class DataService {
   constructor(data) {
-    this.title = data.title.length > 100 ? trim(data.title) : data.title;
+    this.title = data.title ? trim(data.title) : data.title;
     this.author = data.authors ? trimAuthors(data.authors) : "Unknown author";
     this.publisher = data.publisher
       ? trim(data.publisher)
