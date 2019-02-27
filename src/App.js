@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 
 import Input from "./Input";
 import CardList from "./CardList";
@@ -6,6 +7,7 @@ import DataService from "./service/dataservice";
 import Loader from "react-loader-spinner";
 import Error from "./Error";
 import LandingPage from "./LandingPage";
+import SinglePage from "./SinglePage";
 
 import "./css/App.css";
 
@@ -20,6 +22,12 @@ class App extends Component {
       errorType: ""
     };
   }
+  saveInBookshelf = e => {
+    if (e.target.style.fill === "white") {
+      e.target.style.fill = "blue";
+      // push in local storage setState
+    }
+  };
 
   onInputChange = event => {
     this.setState({
@@ -44,8 +52,7 @@ class App extends Component {
     } else {
       // fetching
       fetch(
-        `${url +
-          this.state.input}&key=${key}&maxResults=40&orderBy=relevance${field}`
+        `${url + this.state.input}&key=${key}&maxResults=40&orderBy=relevance`
       )
         .then(res => {
           // handling fetch errors
@@ -65,7 +72,7 @@ class App extends Component {
             this.setState({ error: false, errorType: "" });
             data.items.forEach((book, i) => {
               // console.log(book.volumeInfo.authors);
-              books.push(new DataService(book.volumeInfo));
+              books.push(new DataService(book.volumeInfo, book.id));
             });
           }
           // removing loader and setting book cards
@@ -116,7 +123,20 @@ class App extends Component {
             />
           </div>
         ) : this.state.cards.length > 0 ? ( // landing page issue
-          <CardList cards={this.state.cards} loading={this.state.loading} />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <CardList
+                  saveInBookshelf={this.saveInBookshelf}
+                  cards={this.state.cards}
+                  loading={this.state.loading}
+                />
+              )}
+            />
+            <Route exact path="/:id" component={SinglePage} />
+          </Switch>
         ) : (
           <LandingPage />
         )}

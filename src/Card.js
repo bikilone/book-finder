@@ -1,15 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./css/Card.css";
 
 export default function Card(props) {
-  const { title, author, publisher, link, image } = props.card;
+  const { title, author, publisher, link, image, id } = props.card;
   return (
     <div className="card">
       <img src={image} alt="" />
       <div className="card-right">
         <div className="card-rigth-top">
           <h1>{title}</h1>
-          <svg>
+          <svg onClick={props.saveInBookshelf}>
             <path
               xmlns="http://www.w3.org/2000/svg"
               className="a"
@@ -20,9 +22,9 @@ export default function Card(props) {
         </div>
         <p className="author">By: {author}</p>
         <p className="publisher">Published By: {publisher}</p>
-        <a href={link}>
+        <Link to={`/${id}`}>
           <button className="button">See this Book</button>
-        </a>
+        </Link>
       </div>
     </div>
   );

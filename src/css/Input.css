@@ -37,6 +37,8 @@ input:focus {
   border-radius: 110px 116px;
   padding-bottom: 20px;
   outline: none;
+  text-decoration: none;
+  /* display: inline-block; */
 }
 
 span {
@@ -83,7 +85,7 @@ span {
     display: inline-block;
   }
   .search-button {
-    display: inline;
+    display: inline-block;
     margin-left: 15px;
     width: 142px;
     height: 29px;
@@ -103,9 +105,11 @@ span {
   }
   .search-button {
     width: 141px;
+    line-height: 33px;
     height: 37px;
     font-size: 20px;
     padding-bottom: 5px;
+    display: inline-block;
   }
   span {
     font-size: 22px;
