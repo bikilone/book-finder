@@ -20,6 +20,9 @@ class App extends Component {
       errorType: ""
     };
   }
+  componentDidMount() {
+    this.onSubmit();
+  }
 
   onInputChange = event => {
     this.setState({
@@ -28,9 +31,10 @@ class App extends Component {
   };
 
   onSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
-    const url = "https://www.googleapis.com/books/v1/volumes?q=";
+    const url = "https://www.googleapis.com/books/v1/volumes?q=harry";
+    const field = `&fields=items(volumeInfo/title, volumeInfo/authors, volumeInfo/publisher,volumeInfo/imageLinks, volumeInfo/previewLink)`;
     // setting loader
     this.setState({
       loading: true,
@@ -38,15 +42,14 @@ class App extends Component {
       errorType: ""
     });
     // mistake - empty input
-    if (this.state.input.length === 0) {
+    if (this.state.input.length === 1) {
       this.setState({ error: true, errorType: "empty input" });
     } else {
       // fetching
-      fetch(
-        `${url + this.state.input}&key=${key}&maxResults=40&orderBy=relevance`
-      )
+      fetch(`${url}&key=${key}&maxResults=40&orderBy=relevance${field}`)
         .then(res => {
           // handling fetch errors
+          console.log(res);
           if (res.ok) {
             return res.json();
           } else {
@@ -55,6 +58,7 @@ class App extends Component {
         })
         .then(data => {
           const books = [];
+          console.log(data);
           // mistake - empty response
           if (data.totalItems === 0) {
             this.setState({ error: true, errorType: "empty response" });

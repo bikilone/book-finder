@@ -2,52 +2,79 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 100%; */
-  margin: 15px;
-  /* height: 300px; */
-  /* background-color: lightgrey; */
+  color: white;
+  font-family: "Roboto";
+  margin-bottom: 48px;
 }
 
 .card img {
-  /* position: relative;
-  bottom: 30px; */
-  width: 192px;
-  height: 276px;
-  -webkit-box-shadow: -11px 4px 37px 8px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -11px 4px 37px 8px rgba(0, 0, 0, 0.75);
-  box-shadow: -11px 4px 37px 8px rgba(0, 0, 0, 0.75);
+  width: 184px;
+  height: 271px;
+  box-shadow: -12px -7px 13px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: -12px -7px 13px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: -12px -7px 13px rgba(0, 0, 0, 0.16);
+  margin-bottom: 2px;
 }
 
 .card-right {
-  width: 250px;
-  height: 300px;
+  width: 226px;
+  height: 264px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: nowrap;
+  background-color: #e69f00;
+  border: 1px solid #707070;
+  border-radius: 20px;
+  -webkit-box-shadow: -5px 3px 6px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: -5px 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: -5px 3px 6px rgba(0, 0, 0, 0.16);
+  position: relative;
 }
 
 .card-right h1 {
-  font-size: 22px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-bottom: 0;
+  font-size: 18px;
+  margin-top: 12px;
+  margin-left: 12px;
+  text-align: left;
+  display: inline;
+  position: absolute;
+  left: 0;
+  max-width: 160px;
+}
+.card-right svg {
+  fill: white;
+  display: inline-block;
+  width: 31px;
+  height: 31px;
+  position: absolute;
+  right: 0;
+  margin-top: 19px;
+  margin-right: 13px;
 }
 
-.card-right p {
-  font-size: 18px;
-  margin: 2px;
-  padding: 2px;
+.card-rigth-top {
+  min-height: 60px;
+}
+
+.author,
+.publisher {
+  font-size: 16px;
 }
 
 .button {
   color: white;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
-  background-color: green;
+  background-color: #755713;
   box-shadow: none;
   padding: 8px 10px;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: "Roboto";
+  width: 149px;
+  height: 38px;
+  position: relative;
+  top: 10px;
 }
 
 @media only screen and (min-width: 480px) {
