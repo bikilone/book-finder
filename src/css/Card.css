@@ -25,7 +25,7 @@
   flex-wrap: nowrap;
   background-color: #e69f00;
   border: 1px solid #707070;
-  border-radius: 20px;
+
   -webkit-box-shadow: -5px 3px 6px rgba(0, 0, 0, 0.16);
   -moz-box-shadow: -5px 3px 6px rgba(0, 0, 0, 0.16);
   box-shadow: -5px 3px 6px rgba(0, 0, 0, 0.16);
@@ -82,8 +82,27 @@
     flex-direction: row;
     justify-content: center;
   }
+  .card {
+    /* position: relative; */
+    background-color: #e69f00;
+    width: 409px;
+    height: 264px;
+    border-radius: 20px;
+    margin-bottom: 78px;
+  }
+  .card img {
+    position: relative;
+    bottom: 12px;
+    z-index: 1;
+    /* float: right; */
+  }
+  .card-right {
+    border-radius: 20px;
+    border: none;
+    box-shadow: none;
+  }
 }
-@media only screen and (min-width: 576px) {
+/* @media only screen and (min-width: 576px) {
   .card-right {
     width: 300px;
   }
@@ -92,6 +111,9 @@
   .card-right {
     width: 220px;
   }
+} */
+
+@media screen and only (min-width: 720px) {
 }
 
 /* @media only screen and (max-width: 896px) {

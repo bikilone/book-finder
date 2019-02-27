@@ -47,22 +47,46 @@ span {
   display: inline-block;
 }
 
-@media only screen and (min-width: 720px) {
-  .input {
-    width: 420px;
-    margin: 10px;
+@media only screen and (min-width: 480px) {
+  .main-h1 {
+    font-size: 27px;
   }
-  span {
-    right: 45px;
+  .input {
+    width: 226px;
+    height: 26px;
+    margin-top: 37px;
+  }
+  .search-button {
+    width: 148px;
+    height: 26px;
+    font-size: 19px;
+    padding-bottom: 25px;
+    margin-top: 16px;
   }
 }
 
-/* @media only screen and (max-width: 480px) {
+@media only screen and (min-width: 720px) {
+  .main-h1 {
+    font-size: 39px;
+    margin-top: 41px;
+  }
   .input {
-    width: 320px;
+    width: 264px;
+    height: 29px;
+    position: relative;
+    display: inline-block;
+  }
+  .search-button {
+    display: inline;
+    margin-left: 15px;
+    width: 142px;
+    height: 29px;
+  }
+  span {
+    right: 30px;
   }
 }
-@media only screen and (max-width: 360px) {
+/* @media only screen and (max-width: 360px) {
   .input {
     width: 280px;
   }
