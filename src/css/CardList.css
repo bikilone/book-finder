@@ -5,6 +5,9 @@
   margin-top: 30px;
   flex-direction: column;
   align-items: center;
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media only screen and (min-width: 480px) {
@@ -17,5 +20,37 @@
 @media only screen and (min-width: 720px) {
   .card-list {
     margin-top: 74px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .card-list {
+    margin-top: 65px;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+  }
+  .card {
+    margin-right: 19px;
+    margin-left: 19px;
+    margin-bottom: 78px;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .card-list {
+    margin-top: 85px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .card-list {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .card-list {
+    margin-top: 108px;
   }
 }
