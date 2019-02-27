@@ -1,6 +1,6 @@
 export function trim(data) {
-  if (data.length > 60) {
-    return data.slice(0, 50) + "...";
+  if (data.length > 50) {
+    return data.slice(0, 40) + "...";
   } else return data;
 }
 export function trimAuthors(data) {

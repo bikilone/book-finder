@@ -20,9 +20,6 @@ class App extends Component {
       errorType: ""
     };
   }
-  componentDidMount() {
-    this.onSubmit();
-  }
 
   onInputChange = event => {
     this.setState({
@@ -31,9 +28,9 @@ class App extends Component {
   };
 
   onSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
-    const url = "https://www.googleapis.com/books/v1/volumes?q=harry";
+    const url = "https://www.googleapis.com/books/v1/volumes?q=";
     const field = `&fields=items(volumeInfo/title, volumeInfo/authors, volumeInfo/publisher,volumeInfo/imageLinks, volumeInfo/previewLink)`;
     // setting loader
     this.setState({
@@ -42,14 +39,16 @@ class App extends Component {
       errorType: ""
     });
     // mistake - empty input
-    if (this.state.input.length === 1) {
+    if (this.state.input.length === 0) {
       this.setState({ error: true, errorType: "empty input" });
     } else {
       // fetching
-      fetch(`${url}&key=${key}&maxResults=40&orderBy=relevance${field}`)
+      fetch(
+        `${url +
+          this.state.input}&key=${key}&maxResults=40&orderBy=relevance${field}`
+      )
         .then(res => {
           // handling fetch errors
-          console.log(res);
           if (res.ok) {
             return res.json();
           } else {
@@ -105,13 +104,17 @@ class App extends Component {
           <Error error={this.state.errorType} />
         ) : // checking if page is loading or ready
         this.state.loading ? (
-          <Loader
-            type="Circles"
-            color="green"
-            height={200}
-            width={200}
-            className="loader"
-          />
+          <div style={{ marginTop: "100px" }}>
+            <Loader
+              type="Circles"
+              color="#ff6f00"
+              marginTop="100px"
+              marginTop={100}
+              height={200}
+              width={200}
+              className="loader"
+            />
+          </div>
         ) : this.state.cards.length > 0 ? ( // landing page issue
           <CardList cards={this.state.cards} loading={this.state.loading} />
         ) : (

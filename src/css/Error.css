@@ -1,9 +1,13 @@
 .error {
   border: 1px solid red;
+  background-color: #fff6e2;
+  border-radius: 20px;
+  color: #ff6f00;
+  font-family: "Roboto";
   width: 300px;
   font-size: 20px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 40px;
   position: relative;
   right: 100%;
   visibility: hidden;
