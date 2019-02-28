@@ -4,8 +4,6 @@ import "./css/CardList.css";
 import LandingPage from "./LandingPage";
 
 export default function CardList(props) {
-  console.log(props);
-
   return (
     <div className="card-list">
       {props.cards.length > 0 ? (

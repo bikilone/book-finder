@@ -9,6 +9,7 @@ import Error from "./Error";
 import LandingPage from "./LandingPage";
 import SinglePage from "./SinglePage";
 import Header from "./Header";
+import { changeState } from "./service/helper";
 
 import "./css/App.css";
 import { debug } from "util";
@@ -22,7 +23,8 @@ class App extends Component {
       loading: false,
       error: false,
       errorType: "",
-      bookshelf: []
+      bookshelf: [],
+      mark: ""
     };
   }
 
@@ -73,12 +75,53 @@ class App extends Component {
       input: event.target.value
     });
   };
+  fetchingData = () => {
+    const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
+    const url = "https://www.googleapis.com/books/v1/volumes?q=";
+    const field = `&&fields=items(volumeInfo/title, volumeInfo/authors, volumeInfo/publisher,volumeInfo/imageLinks, volumeInfo/previewLink)`;
+    fetch(
+      `${url + this.state.input}&key=${key}&maxResults=40&orderBy=relevance`
+    )
+      .then(res => {
+        // handling fetch errors
+        // console.log(res);
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then(data => {
+        // console.log(data);
+        const books = [];
+        // mistake - empty response
+        if (data.totalItems === 0) {
+          this.setState({ error: true, errorType: "empty response" });
+        } else {
+          this.setState({ error: false, errorType: "" });
+          data.items.forEach((book, i) => {
+            // console.log(book.volumeInfo.authors);
+            books.push(new DataService(book.volumeInfo, book.id));
+          });
+        }
+        // removing loader and setting book cards
+
+        this.setState({
+          cards: books,
+          loading: false
+        });
+      })
+      .catch(error => {
+        this.setState({
+          error: true,
+          errorType: "something went wrong"
+        });
+      });
+  };
 
   onSubmit = e => {
     e.preventDefault();
-    const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
-    const url = "https://www.googleapis.com/books/v1/volumes?q=";
-    const field = `&fields=items(volumeInfo/title, volumeInfo/authors, volumeInfo/publisher,volumeInfo/imageLinks, volumeInfo/previewLink)`;
+
     // setting loader
     this.setState({
       loading: true,
@@ -90,41 +133,7 @@ class App extends Component {
       this.setState({ error: true, errorType: "empty input" });
     } else {
       // fetching
-      fetch(
-        `${url + this.state.input}&key=${key}&maxResults=40&orderBy=relevance`
-      )
-        .then(res => {
-          // handling fetch errors
-          if (res.ok) {
-            return res.json();
-          } else {
-            throw new Error("Something went wrong");
-          }
-        })
-        .then(data => {
-          const books = [];
-          // mistake - empty response
-          if (data.totalItems === 0) {
-            this.setState({ error: true, errorType: "empty response" });
-          } else {
-            this.setState({ error: false, errorType: "" });
-            data.items.forEach((book, i) => {
-              // console.log(book.volumeInfo.authors);
-              books.push(new DataService(book.volumeInfo, book.id));
-            });
-          }
-          // removing loader and setting book cards
-          this.setState({
-            cards: books,
-            loading: false
-          });
-        })
-        .catch(error => {
-          this.setState({
-            error: true,
-            errorType: "something went wrong"
-          });
-        });
+      this.fetchingData();
     }
   };
   // making sure that mistake is removed

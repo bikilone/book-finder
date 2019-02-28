@@ -1,3 +1,5 @@
+import DataService from "./dataservice";
+
 export function trim(data) {
   if (data.length > 50) {
     return data.slice(0, 40) + "...";
@@ -8,3 +10,9 @@ export function trimAuthors(data) {
     return trim(data.join(", "));
   } else return trim(data);
 }
+
+export const changeState = () => {
+  this.setState({
+    mark: "bikisa"
+  });
+};
