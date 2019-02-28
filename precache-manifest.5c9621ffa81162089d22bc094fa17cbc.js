@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/book-finder/static/js/runtime~main.736fd422.js"
   },
   {
-    "revision": "3193c26dd21ffbc77188",
-    "url": "/book-finder/static/js/main.3193c26d.chunk.js"
+    "revision": "d6d0f8a868bb552aa2ed",
+    "url": "/book-finder/static/js/main.d6d0f8a8.chunk.js"
   },
   {
     "revision": "357e5a00ed18020079a4",
     "url": "/book-finder/static/js/2.357e5a00.chunk.js"
   },
   {
-    "revision": "3193c26dd21ffbc77188",
+    "revision": "d6d0f8a868bb552aa2ed",
     "url": "/book-finder/static/css/main.08ff16ca.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/book-finder/static/css/2.a4160f6d.chunk.css"
   },
   {
-    "revision": "13873e57dbcc7e57b9b6ec5e0171c4d7",
+    "revision": "98ae3e00c3fac67131f00dc98e2504d9",
     "url": "/book-finder/index.html"
   }
 ];
