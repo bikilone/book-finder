@@ -25,6 +25,7 @@ class App extends Component {
       bookshelf: []
     };
   }
+
   saveInBookshelf = (e, id, bookshelf, data) => {
     // is there bookshelf
     if (bookshelf.length > 0) {
@@ -179,7 +180,6 @@ class App extends Component {
               </div>
             )}
           />
-          {/* <Route exact path="/:id" render={() => <SinglePage />} /> */}
           <Route
             exact
             path="/bookshelf"
@@ -191,6 +191,12 @@ class App extends Component {
                 loading={this.state.loading}
               />
             )}
+          />
+          <Route
+            path="/:id"
+            render={props => {
+              return <SinglePage />;
+            }}
           />
         </Switch>
       </div>

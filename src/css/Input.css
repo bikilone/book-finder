@@ -12,6 +12,14 @@
   color: #ff6f00;
   font-size: 16px;
 }
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bookshelf {
+  text-decoration: none;
+}
 input:focus {
   outline: none;
 }
@@ -20,6 +28,7 @@ input:focus {
   margin-top: 23px;
   color: #ff6f00;
   font-size: 23px;
+  text-decoration: none;
 }
 
 .search-button {

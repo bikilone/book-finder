@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./css/Card.css";
 
 export default function Card(props) {
+  // console.log("Card", props);
   const { title, author, publisher, link, image } = props.card;
   const { id, bookshelf } = props;
   var style = "white";
