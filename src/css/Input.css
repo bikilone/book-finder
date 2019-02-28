@@ -14,12 +14,11 @@
 }
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.bookshelf {
-  text-decoration: none;
-}
 input:focus {
   outline: none;
 }
@@ -29,6 +28,9 @@ input:focus {
   color: #ff6f00;
   font-size: 23px;
   text-decoration: none;
+}
+.bookshelf {
+  margin: 0;
 }
 
 .search-button {
@@ -94,6 +96,7 @@ span {
     display: inline-block;
   }
   .search-button {
+    font-size: 19px;
     display: inline-block;
     margin-left: 15px;
     width: 142px;
@@ -101,6 +104,9 @@ span {
   }
   span {
     right: 30px;
+  }
+  .bookshelf {
+    margin: auto;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -134,6 +140,9 @@ span {
   .input {
     width: 312px;
     height: 37px;
+  }
+  .bookshelf {
+    font-size: 20px;
   }
 }
 

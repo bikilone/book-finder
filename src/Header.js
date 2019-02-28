@@ -8,7 +8,7 @@ export default function Header(props) {
       <Link to="/" className="main-h1">
         Book | Finder
       </Link>
-      <Link className="main-h1 bookshelf" to="/bookshelf">
+      <Link className="main-h1 bookshelf search-button" to="/bookshelf">
         Bookshelf
       </Link>
     </div>
