@@ -12,7 +12,7 @@ export default function Card(props) {
   if (bookshelf.length > 0) {
     bookshelf.forEach(book => {
       if (book.id == id) {
-        style = "blue";
+        style = "#ff3d02";
         return;
       }
     });
