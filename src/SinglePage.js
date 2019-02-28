@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function SinglePage() {
-  return <div>sdsdfa</div>;
+export default function SinglePage(props) {
+  return <div>d</div>;
 }

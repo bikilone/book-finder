@@ -10,7 +10,7 @@ export default function Card(props) {
 
   if (bookshelf.length > 0) {
     bookshelf.forEach(book => {
-      if (book == id) {
+      if (book.id == id) {
         style = "blue";
         return;
       }
@@ -25,7 +25,7 @@ export default function Card(props) {
           <h1>{title}</h1>
           <svg
             onClick={e => {
-              props.saveInBookshelf(e, props.id, bookshelf);
+              props.saveInBookshelf(e, props.id, bookshelf, props.card);
             }}
           >
             <path

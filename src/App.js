@@ -25,28 +25,27 @@ class App extends Component {
       bookshelf: []
     };
   }
-  saveInBookshelf = (e, id, bookshelf) => {
+  saveInBookshelf = (e, id, bookshelf, data) => {
     // is there bookshelf
     if (bookshelf.length > 0) {
       // check is there an id inside
-      if (bookshelf.find(e => e == id) == undefined) {
+      if (bookshelf.find(e => e.id == id) == undefined) {
         // if there is not id inside
         const bookshelf = JSON.parse(localStorage.getItem("bookshelf"));
-        bookshelf.push(id);
+        bookshelf.push({ id, ...data });
         localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
         this.checkLocalStorage();
       } else {
         // if there is id inside, remove id
         var books = JSON.parse(localStorage.getItem("bookshelf"));
-        books = books.filter(book => book !== id);
+        books = books.filter(book => book.id !== id);
         localStorage.setItem("bookshelf", JSON.stringify(books));
         this.checkLocalStorage();
       }
     } else {
       // if bookshelf does not exist
-
       const bookshelf = [];
-      bookshelf.push(id);
+      bookshelf.push({ id, ...data });
       localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
       this.checkLocalStorage();
     }
@@ -180,43 +179,20 @@ class App extends Component {
               </div>
             )}
           />
-          <Route exact path="/:id" component={SinglePage} />
+          {/* <Route exact path="/:id" render={() => <SinglePage />} /> */}
+          <Route
+            exact
+            path="/bookshelf"
+            render={() => (
+              <CardList
+                bookshelf={this.state.bookshelf}
+                saveInBookshelf={this.saveInBookshelf}
+                cards={this.state.bookshelf}
+                loading={this.state.loading}
+              />
+            )}
+          />
         </Switch>
-
-        {/* {// handling mistakes
-        this.state.error ? (
-          
-        ) : // checking if page is loading or ready
-        this.state.loading ? (
-          <div style={{ marginTop: "100px" }}>
-            <Loader
-              type="Circles"
-              color="#ff6f00"
-              marginTop="100px"
-              marginTop={100}
-              height={200}
-              width={200}
-              className="loader"
-            />
-          </div>
-        ) : this.state.cards.length > 0 ? ( // landing page issue
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <CardList
-                  saveInBookshelf={this.saveInBookshelf}
-                  cards={this.state.cards}
-                  loading={this.state.loading}
-                />
-              )}
-            />
-            <Route exact path="/:id" component={SinglePage} />
-          </Switch>
-        ) : (
-          <LandingPage />
-        )} */}
       </div>
     );
   }
