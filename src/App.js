@@ -9,10 +9,10 @@ import Error from "./Error";
 import LandingPage from "./LandingPage";
 import SinglePage from "./SinglePage";
 import Header from "./Header";
-import { changeState } from "./service/helper";
+import { saveInBookshelf, checkLocalStorage } from "./service/localStorage";
+import { fetchingData } from "./service/fetchingData";
 
 import "./css/App.css";
-import { debug } from "util";
 
 class App extends Component {
   constructor() {
@@ -24,48 +24,13 @@ class App extends Component {
       error: false,
       errorType: "",
       bookshelf: [],
-      mark: ""
+      test: ""
     };
+    this.saveInBookshelf = saveInBookshelf.bind(this);
+    this.checkLocalStorage = checkLocalStorage.bind(this);
+    this.fetchingData = fetchingData.bind(this);
   }
 
-  saveInBookshelf = (e, id, bookshelf, data) => {
-    // is there bookshelf
-    if (bookshelf.length > 0) {
-      // check is there an id inside
-      if (bookshelf.find(e => e.id == id) == undefined) {
-        // if there is not id inside
-        const bookshelf = JSON.parse(localStorage.getItem("bookshelf"));
-        bookshelf.push({ id, ...data });
-        localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
-        this.checkLocalStorage();
-      } else {
-        // if there is id inside, remove id
-        var books = JSON.parse(localStorage.getItem("bookshelf"));
-        books = books.filter(book => book.id !== id);
-        localStorage.setItem("bookshelf", JSON.stringify(books));
-        this.checkLocalStorage();
-      }
-    } else {
-      // if bookshelf does not exist
-      const bookshelf = [];
-      bookshelf.push({ id, ...data });
-      localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
-      this.checkLocalStorage();
-    }
-  };
-
-  checkLocalStorage = () => {
-    if (localStorage.getItem("bookshelf") !== null) {
-      const bookshelf = JSON.parse(localStorage.getItem("bookshelf"));
-      this.setState({
-        bookshelf: bookshelf
-      });
-    } else {
-      this.setState({
-        bookshelf: []
-      });
-    }
-  };
   componentDidMount() {
     this.checkLocalStorage();
   }
@@ -74,49 +39,6 @@ class App extends Component {
     this.setState({
       input: event.target.value
     });
-  };
-  fetchingData = () => {
-    const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
-    const url = "https://www.googleapis.com/books/v1/volumes?q=";
-    const field = `&&fields=items(volumeInfo/title, volumeInfo/authors, volumeInfo/publisher,volumeInfo/imageLinks, volumeInfo/previewLink)`;
-    fetch(
-      `${url + this.state.input}&key=${key}&maxResults=40&orderBy=relevance`
-    )
-      .then(res => {
-        // handling fetch errors
-        // console.log(res);
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Something went wrong");
-        }
-      })
-      .then(data => {
-        // console.log(data);
-        const books = [];
-        // mistake - empty response
-        if (data.totalItems === 0) {
-          this.setState({ error: true, errorType: "empty response" });
-        } else {
-          this.setState({ error: false, errorType: "" });
-          data.items.forEach((book, i) => {
-            // console.log(book.volumeInfo.authors);
-            books.push(new DataService(book.volumeInfo, book.id));
-          });
-        }
-        // removing loader and setting book cards
-
-        this.setState({
-          cards: books,
-          loading: false
-        });
-      })
-      .catch(error => {
-        this.setState({
-          error: true,
-          errorType: "something went wrong"
-        });
-      });
   };
 
   onSubmit = e => {

@@ -10,9 +10,3 @@ export function trimAuthors(data) {
     return trim(data.join(", "));
   } else return trim(data);
 }
-
-export const changeState = () => {
-  this.setState({
-    mark: "bikisa"
-  });
-};
