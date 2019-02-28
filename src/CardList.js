@@ -3,7 +3,7 @@ import Card from "./Card";
 import "./css/CardList.css";
 
 export default function CardList(props) {
-  // console.log(props.saveInBookshelf);
+  // console.log(props);
   return (
     <div className="card-list">
       {props.cards.map((card, i) => {
@@ -13,6 +13,7 @@ export default function CardList(props) {
             key={card.id}
             id={card.id}
             saveInBookshelf={props.saveInBookshelf}
+            bookshelf={props.bookshelf}
           />
         );
       })}

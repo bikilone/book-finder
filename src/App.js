@@ -8,8 +8,10 @@ import Loader from "react-loader-spinner";
 import Error from "./Error";
 import LandingPage from "./LandingPage";
 import SinglePage from "./SinglePage";
+import Header from "./Header";
 
 import "./css/App.css";
+import { debug } from "util";
 
 class App extends Component {
   constructor() {
@@ -19,15 +21,52 @@ class App extends Component {
       cards: [],
       loading: false,
       error: false,
-      errorType: ""
+      errorType: "",
+      bookshelf: []
     };
   }
-  saveInBookshelf = e => {
-    if (e.target.style.fill === "white") {
-      e.target.style.fill = "blue";
-      // push in local storage setState
+  saveInBookshelf = (e, id, bookshelf) => {
+    // is there bookshelf
+    if (bookshelf.length > 0) {
+      // check is there an id inside
+      if (bookshelf.find(e => e == id) == undefined) {
+        // if there is not id inside
+        const bookshelf = JSON.parse(localStorage.getItem("bookshelf"));
+        bookshelf.push(id);
+        localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
+        this.checkLocalStorage();
+      } else {
+        // if there is id inside, remove id
+        var books = JSON.parse(localStorage.getItem("bookshelf"));
+        books = books.filter(book => book !== id);
+        localStorage.setItem("bookshelf", JSON.stringify(books));
+        this.checkLocalStorage();
+      }
+    } else {
+      // if bookshelf does not exist
+
+      const bookshelf = [];
+      bookshelf.push(id);
+      localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
+      this.checkLocalStorage();
     }
   };
+
+  checkLocalStorage = () => {
+    if (localStorage.getItem("bookshelf") !== null) {
+      const bookshelf = JSON.parse(localStorage.getItem("bookshelf"));
+      this.setState({
+        bookshelf: bookshelf
+      });
+    } else {
+      this.setState({
+        bookshelf: []
+      });
+    }
+  };
+  componentDidMount() {
+    this.checkLocalStorage();
+  }
 
   onInputChange = event => {
     this.setState({
@@ -64,7 +103,6 @@ class App extends Component {
         })
         .then(data => {
           const books = [];
-          console.log(data);
           // mistake - empty response
           if (data.totalItems === 0) {
             this.setState({ error: true, errorType: "empty response" });
@@ -97,18 +135,57 @@ class App extends Component {
     this.setState({ input: "" });
   };
   render() {
+    // console.log(this.state.bookshelf);
     return (
       <div className="App">
-        <Input
-          clearInput={this.clearInput}
-          inputText={this.state.input}
-          onInputChange={this.onInputChange}
-          onSubmit={this.onSubmit}
-          onClick={this.onClick}
-        />
-        {// handling mistakes
+        <Header />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <div>
+                <Input
+                  clearInput={this.clearInput}
+                  inputText={this.state.input}
+                  onInputChange={this.onInputChange}
+                  onSubmit={this.onSubmit}
+                  onClick={this.onClick}
+                />
+                {// first check is there any error
+                this.state.error ? (
+                  <Error error={this.state.errorType} />
+                ) : this.state.loading ? ( // check is the page loading
+                  <div style={{ marginTop: "100px" }}>
+                    <Loader
+                      type="Circles"
+                      color="#ff6f00"
+                      marginTop="100px"
+                      marginTop={100}
+                      height={200}
+                      width={200}
+                      className="loader"
+                    />
+                  </div>
+                ) : this.state.cards.length > 0 ? ( // check if you need to show card list or landing page
+                  <CardList
+                    bookshelf={this.state.bookshelf}
+                    saveInBookshelf={this.saveInBookshelf}
+                    cards={this.state.cards}
+                    loading={this.state.loading}
+                  />
+                ) : (
+                  <LandingPage />
+                )}
+              </div>
+            )}
+          />
+          <Route exact path="/:id" component={SinglePage} />
+        </Switch>
+
+        {/* {// handling mistakes
         this.state.error ? (
-          <Error error={this.state.errorType} />
+          
         ) : // checking if page is loading or ready
         this.state.loading ? (
           <div style={{ marginTop: "100px" }}>
@@ -139,7 +216,7 @@ class App extends Component {
           </Switch>
         ) : (
           <LandingPage />
-        )}
+        )} */}
       </div>
     );
   }
