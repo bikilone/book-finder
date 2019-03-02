@@ -13,7 +13,7 @@ class DataService {
     this.link = data.previewLink;
     this.id = id;
     this.categories = data.categories ? data.categories : "Unknown";
-    this.description = data.description ? data.description : "n/a";
+    this.description = data.description ? trim(data.description, 200) : "n/a";
     this.pageCount = data.pageCount ? data.pageCount : "n/a";
     this.publishedDate = data.publishedDate ? data.publishedDate : "n/a";
   }

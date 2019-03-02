@@ -1,7 +1,4 @@
 export function saveInBookshelf(e, id, bookshelf, data) {
-  this.setState({
-    test: "biki"
-  });
   // is there bookshelf
   if (bookshelf.length > 0) {
     // check is there an id inside
@@ -12,6 +9,7 @@ export function saveInBookshelf(e, id, bookshelf, data) {
       localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
       this.checkLocalStorage();
     } else {
+      console.log("ever");
       // if there is id inside, remove id
       var books = JSON.parse(localStorage.getItem("bookshelf"));
       books = books.filter(book => book.id !== id);

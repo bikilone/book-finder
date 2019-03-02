@@ -12,6 +12,11 @@ export default class SinglePage extends Component {
       data: ""
     };
   }
+  componentWillReceiveProps(props) {
+    this.setState({
+      bookshelf: props.bookshelf
+    });
+  }
   componentDidMount() {
     const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
     fetch(
@@ -50,13 +55,13 @@ export default class SinglePage extends Component {
         image,
         title,
         publisher,
-        authors
+        author
       } = this.state.data;
       // console.log(author);
       return (
-        <div className="card">
+        <div className="card single-card">
           <img src={image} alt="" />
-          <div className="card-right">
+          <div className="card-right" style={{ height: "500px" }}>
             <div className="card-rigth-top">
               <h1>{title}</h1>
               <svg
@@ -78,7 +83,11 @@ export default class SinglePage extends Component {
                 />
               </svg>
             </div>
-            <p className="author">By: {authors}</p>
+            <p className="author">By: {author}</p>
+            <p className="publisher">Category: {categories[0]}</p>
+            <p className="publisher">Description: {description}</p>
+            <p className="publisher">PageCount: {pageCount}</p>
+            <p className="publisher">Published date: {publishedDate}</p>
             <p className="publisher">Published By: {publisher}</p>
           </div>
         </div>
