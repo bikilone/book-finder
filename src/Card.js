@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import "./css/Card.css";
 
 export default function Card(props) {
-  // console.log("Card", props);
   const { title, author, publisher, link, image } = props.card;
   const { id, bookshelf } = props;
   var style = "white";
 
+  /// checking if there is some book in bookshelf to set up red stars in view
   if (bookshelf.length > 0) {
     bookshelf.forEach(book => {
       if (book.id == id) {

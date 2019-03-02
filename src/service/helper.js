@@ -1,5 +1,3 @@
-import DataService from "./dataservice";
-
 export function trim(data) {
   if (data.length > 50) {
     return data.slice(0, 40) + "...";

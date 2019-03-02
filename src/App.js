@@ -24,7 +24,7 @@ class App extends Component {
       error: false,
       errorType: "",
       bookshelf: [],
-      test: ""
+      singlePage: false
     };
     this.saveInBookshelf = saveInBookshelf.bind(this);
     this.checkLocalStorage = checkLocalStorage.bind(this);
@@ -86,7 +86,7 @@ class App extends Component {
                 {// first check is there any error
                 this.state.error ? (
                   <Error error={this.state.errorType} />
-                ) : this.state.loading ? ( // check is the page loading
+                ) : this.state.loading ? ( // if there is no error check if the page is loading
                   <div style={{ marginTop: "100px" }}>
                     <Loader
                       type="Circles"
@@ -98,7 +98,7 @@ class App extends Component {
                       className="loader"
                     />
                   </div>
-                ) : this.state.cards.length > 0 ? ( // check if you need to show card list or landing page
+                ) : this.state.cards.length > 0 ? ( // if there is no eror and page is not laoding check if you need to show card list or landing page
                   <CardList
                     bookshelf={this.state.bookshelf}
                     saveInBookshelf={this.saveInBookshelf}
@@ -126,7 +126,13 @@ class App extends Component {
           <Route
             path="/:id"
             render={props => {
-              return <SinglePage />;
+              return (
+                <SinglePage
+                  id={props.match.params.id}
+                  saveInBookshelf={this.saveInBookshelf}
+                  bookshelf={this.state.bookshelf}
+                />
+              );
             }}
           />
         </Switch>
