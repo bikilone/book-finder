@@ -13,6 +13,22 @@
   font-size: 16px;
   margin-right: -10px;
 }
+.dropdown {
+  /* display: none; */
+  margin-top: 20px;
+}
+.dropdown ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  list-style: none;
+}
+
+.dropdown ul li {
+  margin: 0 auto;
+  color: #ff6f00;
+  opacity: 0.8;
+}
 .input::placeholder {
   color: #ff6f00;
   opacity: 0.8;

@@ -35,4 +35,33 @@ export function checkLocalStorage() {
       bookshelf: []
     });
   }
+
+  if (localStorage.getItem("queries") !== null) {
+    const queries = JSON.parse(localStorage.getItem("queries"));
+
+    this.setState({
+      queries
+    });
+  } else {
+    this.setState({
+      queries: []
+    });
+  }
+}
+
+export function saveInQueries(data) {
+  if (localStorage.getItem("queries") !== null) {
+    const array = JSON.parse(localStorage.getItem("queries"));
+    array.unshift(data);
+    if (array.length === 11) {
+      array.pop();
+    }
+    localStorage.setItem("queries", JSON.stringify(array));
+    this.checkLocalStorage();
+  } else {
+    const queries = [];
+    queries.push(data);
+    localStorage.setItem("queries", JSON.stringify(queries));
+    this.checkLocalStorage();
+  }
 }

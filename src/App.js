@@ -9,7 +9,11 @@ import Error from "./Error";
 import LandingPage from "./LandingPage";
 import SinglePage from "./SinglePage";
 import Header from "./Header";
-import { saveInBookshelf, checkLocalStorage } from "./service/localStorage";
+import {
+  saveInBookshelf,
+  checkLocalStorage,
+  saveInQueries
+} from "./service/localStorage";
 import { fetchingData } from "./service/fetchingData";
 
 import "./css/App.css";
@@ -24,11 +28,14 @@ class App extends Component {
       error: false,
       errorType: "",
       bookshelf: [],
-      singlePage: false
+      singlePage: false,
+      dropDown: "none",
+      queries: []
     };
     this.saveInBookshelf = saveInBookshelf.bind(this);
     this.checkLocalStorage = checkLocalStorage.bind(this);
     this.fetchingData = fetchingData.bind(this);
+    this.saveInQueries = saveInQueries.bind(this);
   }
 
   componentDidMount() {
@@ -48,15 +55,20 @@ class App extends Component {
     this.setState({
       loading: true,
       error: false,
-      errorType: ""
+      errorType: "",
+      dropDown: "none"
     });
     // mistake - empty input
     if (this.state.input.length === 0) {
-      this.setState({ error: true, errorType: "empty input" });
+      this.setState({
+        error: true,
+        errorType: "empty input"
+      });
     } else {
       // fetching
       this.fetchingData();
     }
+    this.saveInQueries(this.state.input);
     this.props.history.push("/");
     // console.log("props: ", this.props);
   };
@@ -67,6 +79,17 @@ class App extends Component {
   clearInput = () => {
     this.setState({ input: "" });
   };
+
+  showDropDownMenu = () => {
+    this.setState({
+      dropDown: "block"
+    });
+  };
+  hideDropDownMenu = () => {
+    this.setState({
+      dropDown: "none"
+    });
+  };
   render() {
     // console.log(this.state.bookshelf);
     return (
@@ -74,6 +97,10 @@ class App extends Component {
         <div className="wrapper">
           <Header />
           <Input
+            showDropDownMenu={this.showDropDownMenu}
+            hideDropDownMenu={this.hideDropDownMenu}
+            dropDown={this.state.dropDown}
+            queries={this.state.queries}
             clearInput={this.clearInput}
             inputText={this.state.input}
             onInputChange={this.onInputChange}
