@@ -29,6 +29,11 @@
   color: #ff6f00;
   opacity: 0.8;
 }
+.dropdown ul li:hover {
+  border: 5px solid #ff6f00;
+  cursor: pointer;
+}
+
 .input::placeholder {
   color: #ff6f00;
   opacity: 0.8;

@@ -85,9 +85,16 @@ class App extends Component {
       dropDown: "block"
     });
   };
-  hideDropDownMenu = () => {
+  hideDropDownMenu = e => {
     this.setState({
       dropDown: "none"
+    });
+  };
+
+  chooseFromDropMenu = e => {
+    e.stopPropagation();
+    this.setState({
+      input: e.target.dataset.value
     });
   };
   render() {
@@ -97,6 +104,7 @@ class App extends Component {
         <div className="wrapper">
           <Header />
           <Input
+            chooseFromDropMenu={this.chooseFromDropMenu}
             showDropDownMenu={this.showDropDownMenu}
             hideDropDownMenu={this.hideDropDownMenu}
             dropDown={this.state.dropDown}

@@ -16,6 +16,7 @@
   animation-duration: 4s;
   font-family: "Ravie";
   padding: 5px;
+  /* margin-bottom: 100px; */
 }
 
 @keyframes fade {

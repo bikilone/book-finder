@@ -24,6 +24,10 @@ export default class LandingPage extends Component {
   }
 
   render() {
-    return <div className="landing">{`"${this.state.quote}"`}</div>;
+    return this.state.quote.length > 0 ? (
+      <div className="landing">{`"${this.state.quote}"`}</div>
+    ) : (
+      <p className="landing">"Nothing yet"</p>
+    );
   }
 }

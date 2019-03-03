@@ -14,7 +14,8 @@ export default function Input(props) {
     showDropDownMenu,
     hideDropDownMenu,
     dropDown,
-    queries
+    queries,
+    chooseFromDropMenu
   } = props;
 
   const res = queries.filter((query, i) => query.includes(inputText));
@@ -28,7 +29,8 @@ export default function Input(props) {
           type="text"
           onChange={onInputChange}
           value={inputText}
-          onBlur={hideDropDownMenu}
+          // needed to use focusOut bcs couldnt set up input value
+          onFocusOut={hideDropDownMenu}
           onFocus={showDropDownMenu}
         />
         <span onClick={clearInput}>X</span>
@@ -37,13 +39,13 @@ export default function Input(props) {
         </button>
         <div className="dropdown" style={{ display: dropDown }}>
           <ul>
-            {/* {queries.map((query, i) => (
-              <li key={i} className="input">
-                {query}
-              </li>
-            ))} */}
             {res.map((element, i) => (
-              <li key={i} className="input">
+              <li
+                key={i}
+                data-value={element}
+                className="input"
+                onClick={chooseFromDropMenu}
+              >
                 {element}
               </li>
             ))}
