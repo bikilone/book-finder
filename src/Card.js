@@ -25,6 +25,7 @@ export default function Card(props) {
         <div className="card-rigth-top">
           <h1>{title}</h1>
           <svg
+            style={{ cursor: "pointer" }}
             onClick={e => {
               props.saveInBookshelf(e, props.id, bookshelf, props.card);
             }}

@@ -8,3 +8,8 @@ export function trimAuthors(data) {
     return trim(data.join(", "));
   } else return trim(data);
 }
+
+export function trimDescription(data) {
+  var data = data.slice("<");
+  data.array.forEach(element => {});
+}

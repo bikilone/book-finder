@@ -1,6 +1,20 @@
 .landing {
-  font-size: 40px;
-  margin-top: 80px;
+  font-size: 20px;
   color: #ff6f00;
   font-family: "Ravie";
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 80px;
+  word-break: break-word;
+}
+
+@media only screen and (min-width: 720px) {
+  .landing {
+    font-size: 22px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .landing {
+    font-size: 25px;
+  }
 }

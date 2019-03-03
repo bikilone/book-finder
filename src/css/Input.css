@@ -185,6 +185,7 @@ span {
     height: 45px;
     font-size: 32px;
     margin-top: 60px;
+    padding-top: 0;
   }
   .header {
     justify-content: space-around;

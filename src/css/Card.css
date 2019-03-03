@@ -59,6 +59,10 @@
 .card-rigth-top {
   min-height: 60px;
 }
+
+.card-right a {
+  cursor: default;
+}
 .card-rigth-top h1 {
   font-weight: bold;
 }

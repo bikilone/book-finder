@@ -8,6 +8,7 @@
 .single-page .card-right {
   /* height: 480px; */
   overflow: hidden;
+  min-height: 80%;
 }
 .single-page {
   margin-bottom: 140px;
