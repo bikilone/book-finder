@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 import "./css/Card.css";
 
@@ -31,6 +32,11 @@ export default function Card(props) {
             }}
           >
             <path
+              data-tip={
+                style === "white"
+                  ? "Save this book in your bookshelf"
+                  : "Remove this book from your bookshelf"
+              }
               fill={style}
               xmlns="http://www.w3.org/2000/svg"
               className="a"
@@ -45,6 +51,7 @@ export default function Card(props) {
           <button className="button">See this Book</button>
         </Link>
       </div>
+      <ReactTooltip className="tooltip" />
     </div>
   );
 }
