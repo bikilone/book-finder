@@ -33,6 +33,7 @@ class App extends Component {
 
   componentDidMount() {
     this.checkLocalStorage();
+    this.fetchingData();
   }
 
   onInputChange = event => {
@@ -70,19 +71,26 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Input
+          clearInput={this.clearInput}
+          inputText={this.state.input}
+          onInputChange={this.onInputChange}
+          onSubmit={this.onSubmit}
+          onClick={this.onClick}
+        />
         <Switch>
           <Route
             exact
             path="/"
             render={() => (
               <div>
-                <Input
+                {/* <Input
                   clearInput={this.clearInput}
                   inputText={this.state.input}
                   onInputChange={this.onInputChange}
                   onSubmit={this.onSubmit}
                   onClick={this.onClick}
-                />
+                /> */}
                 {// first check is there any error
                 this.state.error ? (
                   <Error error={this.state.errorType} />

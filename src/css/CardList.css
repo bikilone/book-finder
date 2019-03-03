@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 34px;
   flex-direction: column;
   align-items: center;
   width: 99%;
@@ -25,10 +25,11 @@
 
 @media only screen and (min-width: 1024px) {
   .card-list {
-    margin-top: 65px;
+    margin-top: 66px;
     justify-content: center;
     display: flex;
     flex-direction: row;
+    width: 95%;
   }
   .card {
     margin-right: 19px;
@@ -40,12 +41,6 @@
 @media only screen and (min-width: 1366px) {
   .card-list {
     margin-top: 85px;
-  }
-}
-
-@media only screen and (min-width: 1800px) {
-  .card-list {
-    width: 90%;
   }
 }
 

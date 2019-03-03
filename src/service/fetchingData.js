@@ -4,7 +4,7 @@ export function fetchingData() {
   const key = "AIzaSyAOaVBnu7fgtzZVvuSjWw9MaGmDE3P73sA";
   const url = "https://www.googleapis.com/books/v1/volumes?q=";
   const field = `&&fields=items(volumeInfo/title, volumeInfo/authors, volumeInfo/publisher,volumeInfo/imageLinks, volumeInfo/previewLink)`;
-  fetch(`${url + this.state.input}&key=${key}&maxResults=40&orderBy=relevance`)
+  fetch(`${url}harry&key=${key}&maxResults=40&orderBy=relevance`)
     .then(res => {
       // handling fetch errors
       // console.log(res);
