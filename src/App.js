@@ -33,7 +33,6 @@ class App extends Component {
 
   componentDidMount() {
     this.checkLocalStorage();
-    this.fetchingData();
   }
 
   onInputChange = event => {

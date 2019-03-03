@@ -1,0 +1,46 @@
+.single-page .card p {
+  margin-bottom: 10px;
+}
+.single-page .card-right {
+  height: 480px;
+}
+@media only screen and (min-width: 480px) {
+  .single-page .card {
+    height: 480px;
+    width: 460px;
+  }
+  .single-page .card img {
+    height: 352px;
+    width: 239px;
+  }
+}
+@media only screen and (min-width: 720px) {
+  .single-page .card {
+    width: 680px;
+    justify-content: space-around;
+  }
+  .single-page .card img {
+    height: 406.5px;
+    width: 276px;
+  }
+  .single-page .card-right {
+    width: 40%;
+  }
+  /* .single-page {
+    height: 400px;
+    width: 90%;
+  }
+  .single-page .card {
+    height: 400px;
+    width: 90%;
+  }
+  .single-page img {
+    width: 239px;
+    height: 352px;
+  }
+
+  .single-page .card-right {
+    height: 400px;
+    width: 600px;
+  } */
+}
