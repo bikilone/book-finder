@@ -1,8 +1,16 @@
 .single-page .card p {
+  /* margin-bottom: 80px; */
   margin-bottom: 10px;
 }
+.single-page .card-rigth-top {
+  margin-bottom: 30px;
+}
 .single-page .card-right {
-  height: 480px;
+  /* height: 480px; */
+  overflow: hidden;
+}
+.single-page {
+  margin-bottom: 140px;
 }
 @media only screen and (min-width: 480px) {
   .single-page .card {

@@ -15,7 +15,6 @@ export function fetchingData() {
       }
     })
     .then(data => {
-      console.log(data);
       // categories, description, industryIdentifiers, pageCount, publishedDate,
       const books = [];
       // mistake - empty response

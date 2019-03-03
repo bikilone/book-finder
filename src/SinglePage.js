@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DataService from "./service/dataservice";
+import Error from "./Error";
 
 import "./css/SinglePage.css";
 
@@ -10,7 +11,9 @@ export default class SinglePage extends Component {
       id: props.id,
       saveInBookshelf: props.saveInBookshelf,
       bookshelf: props.bookshelf,
-      data: ""
+      data: "",
+      error: false,
+      errorType: ""
     };
   }
   componentWillReceiveProps(props) {
@@ -29,9 +32,8 @@ export default class SinglePage extends Component {
         this.setState({
           data: data
         });
-        console.log(data);
       })
-      .catch(eror => console.log(eror));
+      .catch(eror => {});
   }
   render() {
     var style = "white";
@@ -106,7 +108,7 @@ export default class SinglePage extends Component {
         </div>
       );
     } else {
-      return <div>sdaf</div>;
+      return <Error error="something went wrong" />;
     }
   }
 }

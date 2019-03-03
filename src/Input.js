@@ -10,7 +10,7 @@ export default function Input(props) {
     <div>
       <form action="" onSubmit={onSubmit}>
         <input
-          placeholder="Some search"
+          placeholder="search ..."
           className="input"
           type="text"
           onChange={onInputChange}

@@ -1,3 +1,20 @@
 .App {
   text-align: center;
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+footer {
+  height: 50px;
+  background-color: #e69f00;
+  color: white;
+  font-family: "Ravie";
+  font-size: 14px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

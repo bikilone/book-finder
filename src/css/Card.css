@@ -21,7 +21,7 @@
 
 .card-right {
   width: 226px;
-  height: 264px;
+  min-height: 264px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

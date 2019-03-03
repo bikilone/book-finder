@@ -67,6 +67,10 @@ input:focus {
   text-decoration: none;
 }
 
+.search-button:hover {
+  cursor: pointer;
+}
+
 span {
   position: relative;
   right: 20px;
