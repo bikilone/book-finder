@@ -10,6 +10,8 @@
 .tooltip {
   background: #ff6f00 !important;
   font-family: "Ravie" !important;
+  border: 1px solid #755713;
+  opacity: 1 !important;
 }
 
 .card img {

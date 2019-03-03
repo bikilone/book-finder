@@ -10,6 +10,8 @@ export function trimAuthors(data) {
 }
 
 export function trimDescription(data) {
-  var data = data.slice("<");
-  data.array.forEach(element => {});
+  data
+    .replace("<p>", "")
+    .replace("</p>", "")
+    .replace("<i>");
 }

@@ -51,7 +51,7 @@ export default function Card(props) {
           <button className="button">See this Book</button>
         </Link>
       </div>
-      <ReactTooltip className="tooltip" />
+      <ReactTooltip className="tooltip" effect="solid" />
     </div>
   );
 }

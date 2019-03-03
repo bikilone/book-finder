@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DataService from "./service/dataservice";
 import Error from "./Error";
 import Loader from "react-loader-spinner";
+import ReactTooltip from "react-tooltip";
 
 import "./css/SinglePage.css";
 
@@ -109,6 +110,11 @@ export default class SinglePage extends Component {
                     }}
                   >
                     <path
+                      data-tip={
+                        style === "white"
+                          ? "Save this book in your bookshelf"
+                          : "Remove this book from your bookshelf"
+                      }
                       fill={style}
                       xmlns="http://www.w3.org/2000/svg"
                       className="a"
@@ -130,6 +136,7 @@ export default class SinglePage extends Component {
                 <p className="publisher">Published By: {publisher}</p>
               </div>
             </div>
+            <ReactTooltip className="tooltip" effect="solid" />
           </div>
         );
       }
