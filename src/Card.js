@@ -21,7 +21,7 @@ export default function Card(props) {
 
   return (
     <div className="card">
-      <img src={image} alt="" />
+      <img src={image} alt={title} />
       <div className="card-right">
         <div className="card-rigth-top">
           <h1>{title}</h1>
