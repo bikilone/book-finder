@@ -50,8 +50,11 @@ export function checkLocalStorage() {
 }
 
 export function saveInQueries(data) {
+  if (data === "") return;
   if (localStorage.getItem("queries") !== null) {
     const array = JSON.parse(localStorage.getItem("queries"));
+    // return if data is already in queries
+    if (array.find(e => e === data)) return;
     array.unshift(data);
     if (array.length === 11) {
       array.pop();

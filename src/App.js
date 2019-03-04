@@ -93,9 +93,16 @@ class App extends Component {
 
   chooseFromDropMenu = e => {
     e.stopPropagation();
-    this.setState({
-      input: e.target.dataset.value
-    });
+    this.setState(
+      {
+        input: e.target.dataset.value,
+        dropDown: "none"
+      },
+      // fetching data after setState updates
+      () => {
+        this.fetchingData();
+      }
+    );
   };
   render() {
     // console.log(this.state.bookshelf);
