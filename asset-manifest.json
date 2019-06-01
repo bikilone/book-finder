@@ -1,15 +1,15 @@
 {
-  "main.css": "/book-finder/static/css/main.cbc0fc9e.chunk.css",
-  "main.js": "/book-finder/static/js/main.102952b6.chunk.js",
-  "main.js.map": "/book-finder/static/js/main.102952b6.chunk.js.map",
+  "main.css": "/book-finder/static/css/main.7fa9a6f6.chunk.css",
+  "main.js": "/book-finder/static/js/main.a26e418b.chunk.js",
+  "main.js.map": "/book-finder/static/js/main.a26e418b.chunk.js.map",
   "runtime~main.js": "/book-finder/static/js/runtime~main.736fd422.js",
   "runtime~main.js.map": "/book-finder/static/js/runtime~main.736fd422.js.map",
-  "static/css/2.a4160f6d.chunk.css": "/book-finder/static/css/2.a4160f6d.chunk.css",
-  "static/js/2.3b33333f.chunk.js": "/book-finder/static/js/2.3b33333f.chunk.js",
-  "static/js/2.3b33333f.chunk.js.map": "/book-finder/static/js/2.3b33333f.chunk.js.map",
+  "static/css/2.067add43.chunk.css": "/book-finder/static/css/2.067add43.chunk.css",
+  "static/js/2.b664dfaf.chunk.js": "/book-finder/static/js/2.b664dfaf.chunk.js",
+  "static/js/2.b664dfaf.chunk.js.map": "/book-finder/static/js/2.b664dfaf.chunk.js.map",
   "index.html": "/book-finder/index.html",
-  "precache-manifest.7ed80f361d022072e18d5af54592a03f.js": "/book-finder/precache-manifest.7ed80f361d022072e18d5af54592a03f.js",
+  "precache-manifest.9ecc778b23f9ccc643204d5f44dfadc4.js": "/book-finder/precache-manifest.9ecc778b23f9ccc643204d5f44dfadc4.js",
   "service-worker.js": "/book-finder/service-worker.js",
-  "static/css/2.a4160f6d.chunk.css.map": "/book-finder/static/css/2.a4160f6d.chunk.css.map",
-  "static/css/main.cbc0fc9e.chunk.css.map": "/book-finder/static/css/main.cbc0fc9e.chunk.css.map"
+  "static/css/2.067add43.chunk.css.map": "/book-finder/static/css/2.067add43.chunk.css.map",
+  "static/css/main.7fa9a6f6.chunk.css.map": "/book-finder/static/css/main.7fa9a6f6.chunk.css.map"
 }
