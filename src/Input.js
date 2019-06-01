@@ -45,6 +45,7 @@ export default function Input(props) {
                 data-value={element}
                 className="input"
                 onClick={chooseFromDropMenu}
+                style={{ overflow: "hidden" }}
               >
                 {element}
               </li>
